@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/css/materialize.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <script src="./static/js/materialize.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/login.js"></script>
+    <script src="./static/js/jquery-3.7.1.min.js"></script>    
+    <script src="./static/js/jquery.mask.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>FitAdmin</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="card grey darken-4 card-login">
+                
+                <div class="container container-img-login">
+                    <img src="./static/img/logo.png" alt="Logo FitAdmin" class="responsive-img center-align">
+                </div>
+
+                <div class="row" style="transform: translateY(-120px);">
+
+                    <div class="row">
+                        <div class="input-field col s10">
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10">
+                          <input id="password" type="password" class="validate">
+                          <label for="password">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="text-align: center; ">
+                        <div class="input-field col s10">
+                            <button onclick="authenticateUser()" data-target="modal-create" class="waves-effect waves-light btn-large green btn-opcoes" 
+                            style="width: 250px;position: relative; ">
+                            Login
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+<style>
+
+.modal 
+.modal-footer 
+.btn, 
+.modal 
+.modal-footer 
+.btn-large, 
+.modal 
+.modal-footer 
+.btn-small, 
+.modal 
+.modal-footer 
+.btn-flat {
+    margin: 10px 20px 0 20px !important;
+}
+
+
+input:not([type]), 
+input[type=text]:not(.browser-default), 
+input[type=password]:not(.browser-default), 
+input[type=email]:not(.browser-default), 
+input[type=url]:not(.browser-default), 
+input[type=time]:not(.browser-default), 
+input[type=date]:not(.browser-default), 
+input[type=datetime]:not(.browser-default), 
+input[type=datetime-local]:not(.browser-default), 
+input[type=tel]:not(.browser-default), 
+input[type=number]:not(.browser-default), 
+input[type=search]:not(.browser-default), 
+textarea.materialize-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+    color: white !important;
+}
+
+input:not([type]).validate + label, 
+input[type=text]:not(.browser-default).validate + label, 
+input[type=password]:not(.browser-default).validate + label, 
+input[type=email]:not(.browser-default).validate + label, 
+input[type=url]:not(.browser-default).validate + label, 
+input[type=time]:not(.browser-default).validate + label, 
+input[type=date]:not(.browser-default).validate + label, 
+input[type=datetime]:not(.browser-default).validate + label, 
+input[type=datetime-local]:not(.browser-default).validate + label, 
+input[type=tel]:not(.browser-default).validate + label, 
+input[type=number]:not(.browser-default).validate + label, 
+input[type=search]:not(.browser-default).validate + label, 
+textarea.materialize-textarea.validate + label {
+    width: 100% !important;
+    color: white !important; 
+}
+
+
+</style>

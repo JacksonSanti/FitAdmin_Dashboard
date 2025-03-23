@@ -1,0 +1,199 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/background.jpg");
+    background-size: cover;         
+    background-position: center;   
+    background-repeat: no-repeat;   
+    background-attachment: fixed;  
+}
+
+.card-general{
+    opacity: 0.7;
+    border-radius: 20px;
+    height: 98.5vh;
+    width: 100%;
+}
+
+.card-login{
+    opacity: 0.7;
+    border-radius: 20px;
+    height: 45vh;
+    width: 50%;
+    left: 25%;
+    margin-top: 15%;
+}
+
+.container-img{
+    transform: translateY(-170px);
+    position: relative;
+    right: 30px; 
+    
+}
+
+.container-img-login{
+    transform: translateY(-70px);
+    position: relative;
+    right: 30px;
+    width: 70%;
+    
+}
+
+.container-table {
+    padding: 0% !important;
+    height: 35%;
+    width: 100%;
+}
+
+.row .col.s10 {
+    width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    left: 7%;
+}
+
+.btn-opcoes{
+    border-radius: 30px;
+}
+
+.modal-delete {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 20% !important ;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 20px;
+    will-change: top, opacity;
+}
+
+.modal-info {
+    display: none;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 20px;
+    will-change: top, opacity;
+
+}
+
+
+.modal-create {
+    display: none;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 20px;
+    will-change: top, opacity;
+
+}
+
+.container-generic{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+}
+
+.datepicker-date-display {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 auto;
+    -ms-flex: 1 auto;
+    flex: 1 auto;
+    background-color: #2196F3 !important;
+    color: #fff;
+    padding: 20px 22px;
+    font-weight: 500;
+    
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    font-size: 16px;
+    color: black !important;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
+.datepicker-modal {
+    border-radius: 20px !important;
+}
+
+.datepicker-table td.is-selected {
+    background-color: #2196F3 ;
+    color: #fff;
+}
+
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+    color: #2196F3 ;
+    padding: 0 1rem;
+}
+
+.modal-footer {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+}
+
+.btn-custom{
+    border-radius: 20px;
+    width: 250px;
+    position: relative;
+    right: 72%; 
+}
+
+.card-panel{
+    transform: translateY(-10px) !important;
+}
+
+.row{
+    margin-bottom: 0px !important;
+}
+
+.div-custom{
+    width: 100px;
+}
+
+.custom-toast {
+    position: fixed !important;
+    top: 70% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background-color: rgba(255, 0, 0, 0.6) !important;
+    color: white !important;
+    font-size: 16px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: 600px !important;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .btn-custom{
+        border-radius: 20px;
+    }
+
+}
