@@ -3,7 +3,7 @@
 ## Introdução
 
 Este projeto é um MVP (Minimum Viable Product) desenvolvido para a PUC-Rio, com o objetivo de colocar em prática os conhecimentos adquiridos no semestre atual. 
-Ele representa a primeira parte do projeto com arquitura em microserviço, após a instalação da primeira parte deve ser feita a instalação da [parte 2] (https://github.com/JacksonSanti/FitAdmin_gateway_api).
+Ele representa a primeira parte do projeto com arquitura em microserviço, após a instalação da primeira parte deve ser feita a instalação da [parte 2](https://github.com/JacksonSanti/FitAdmin_gateway_api).
 
 ---
 
@@ -22,7 +22,7 @@ Contudo, muitas academias — especialmente as que não pertencem a grandes rede
       -Materializecss
    
    Fluxograma:
-      ![FitAdmin](/mnt/c/Users/santi/Downloads/FitAdmin_Fluxograma.png)
+      ![FitAdmin](./mnt/c/Users/santi/Downloads/FitAdmin_Fluxograma.png)
 
 ---
 
