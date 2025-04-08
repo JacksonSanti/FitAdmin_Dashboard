@@ -29,7 +29,7 @@ Este projeto tem como objetivo desenvolver um sistema completo que resolva esse 
 
 **Fluxograma:**
 
-![FitAdmin Fluxograma](./docs/fluxograma.png)
+![FitAdmin Fluxograma](./docs/FitAdmin_Fluxograma.png)
 
 
 ---
