@@ -64,7 +64,17 @@ body {
     border-radius: 30px;
 }
 
-.modal-delete {
+.btn-delete {
+    background-color: #ffffff !important;
+    color: #000;
+    border-radius: 30px !important;
+}
+
+.modal .modal-content {
+    padding: 0px !important;
+}
+
+.modal{
     display: none;
     position: fixed;
     left: 0;
@@ -72,10 +82,10 @@ body {
     background-color: #fafafa;
     padding: 0;
     max-height: 70%;
-    width: 20% !important ;
+    width: 500px !important ;
     margin: auto;
     overflow-y: auto;
-    border-radius: 20px;
+    border-radius: 20px !important;
     will-change: top, opacity;
 }
 
@@ -188,6 +198,10 @@ body {
     border-radius: 10px;
     width: 600px !important;
     text-align: center;
+}
+
+.hide {
+    display: none;
 }
 
 
