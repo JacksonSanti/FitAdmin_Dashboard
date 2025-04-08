@@ -9,20 +9,28 @@ Ele representa a primeira parte do projeto com arquitura em microserviço, após
 
 ## Informativo
 
-1. **Sobre a proposta**
+### 1. **Sobre a proposta**
 Nos últimos anos, tem havido um aumento expressivo de brasileiros buscando uma melhor qualidade de vida, com foco na saúde e bem-estar. Com isso, o número de academias abertas em diversas regiões do Brasil cresceu significativamente.
-Contudo, muitas academias — especialmente as que não pertencem a grandes redes — ainda oferecem uma experiência ruim para o aluno, desde o cadastro de dados até o gerenciamento financeiro. Este projeto tem como objetivo desenvolver um sistema completo que resolva esse problema, proporcionando uma experiência mais agradável e dinâmica tanto para o aluno quanto para a academia.
 
-2. **Sobre a documentação**
-   Tecnologias usadas:
-      -Flask
-      -HTML
-      -Css
-      -JS
-      -Materializecss
-   
-   Fluxograma:
-      ![FitAdmin](./mnt/c/Users/santi/Downloads/FitAdmin_Fluxograma.png)
+Contudo, muitas academias — especialmente as que não pertencem a grandes redes — ainda oferecem uma experiência ruim para o aluno, desde o cadastro de dados até o gerenciamento financeiro.
+
+Este projeto tem como objetivo desenvolver um sistema completo que resolva esse problema, proporcionando uma experiência mais agradável e dinâmica tanto para o aluno quanto para a academia.
+
+---
+
+### 2. **Sobre a documentação**
+
+**Tecnologias utilizadas:**
+- Flask  
+- HTML  
+- CSS  
+- JavaScript  
+- MaterializeCSS
+
+**Fluxograma:**
+
+![FitAdmin Fluxograma](./docs/fluxograma.png)
+
 
 ---
 
@@ -37,6 +45,3 @@ Contudo, muitas academias — especialmente as que não pertencem a grandes rede
 3. **Rodar o comando abaixo em um cmd para subir este container (é necessário ter o docker instalado)**
    ```bash
    docker compose up -d
-
-
-   
