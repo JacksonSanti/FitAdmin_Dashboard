@@ -42,7 +42,7 @@ Este projeto tem como objetivo desenvolver um sistema completo que resolva esse 
 2. **Criar a nossa network para a comunicação dos containers (é necessário ter o docker instalado)**
    ```bash
    docker network fitadmin_network
-3. **Rodar o comando abaixo para instalar as dependências necessárias**
+3. **Após criar o ambiente virtual,instale as dependências necessárias**
    ```bash
    pip install -r requirements.txt
 4. **Rodar o comando abaixo para subir este container (é necessário ter o docker instalado)**
