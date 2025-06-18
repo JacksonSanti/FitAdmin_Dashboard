@@ -28,6 +28,12 @@ function getDataTable(data) {
                 <td>${item.payment.method_name}</td>
                 <td>${item.payment.plan_value - item.payment.method_discount}</td>
                 <td style="padding: 0%;">
+                    <button data-item='${JSON.stringify(item)}' onclick="getAIData(this)" class="waves-effect waves-light btn blue btn-opcoes">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="35px" style="vertical-align: middle;" viewBox="0 0 24 24" width="24px" fill="#e8eaed">
+                            <path d="M0 0h24v24H0V0z" fill="none"/>
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1h-2c0-.55.45-1 1-1zm3 14H8v-2h7v2zm2-4H8v-2h9v2zm0-4H8V7h9v2z"/>
+                        </svg>
+                    </button>
                     <button data-item='${JSON.stringify(item)}' onclick="insertDataStudentByID(this, 'info')" data-target="modal-generic" class="waves-effect waves-light btn blue btn-opcoes modal-trigger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="35px" style="vertical-align: middle;" 
                              viewBox="0 0 24 24" width="24px" fill="#e8eaed">
@@ -96,6 +102,7 @@ function insertDataStudentByID(item, type) {
     const totalInput = document.getElementById("total_");
     const btn = document.getElementById('btn-generic');
 
+
     nameInput.value = data.name;
     emailInput.value = data.email;
     birthdateInput.value = data.birthday;
@@ -145,11 +152,15 @@ function insertDataStudentByID(item, type) {
         const stateInput = document.getElementById("state-select");
         const planInput = document.getElementById("plan-select");
         const methodInput = document.getElementById("method-select"); 
+        const nivelInput = document.getElementById("nivel-select"); 
+        const goalInput = document.getElementById("goal-select"); 
 
         genderInput.innerHTML = "";
         stateInput.innerHTML = "";
         planInput.innerHTML = "";
         methodInput.innerHTML = ""; 
+        nivelInput.innerHTML = "";
+        goalInput.innerHTML = "";
 
         let genderOption = document.createElement('option');
         genderOption.value = data.gender.id;
@@ -172,11 +183,24 @@ function insertDataStudentByID(item, type) {
         methodOption.value = data.payment.method_id;
         methodOption.text = data.payment.method_name;
         methodInput.appendChild(methodOption);
+
+        let nivelOption = document.createElement('option');
+        nivelOption.value = data.nivel.id;
+        nivelOption.text = data.nivel.name;
+        nivelInput.appendChild(nivelOption);
+
+        let goalOption = document.createElement('option');
+        goalOption.value = data.goal.id;
+        goalOption.text = data.goal.name;
+        goalInput.appendChild(goalOption);
         
         M.FormSelect.init(genderInput);
         M.FormSelect.init(stateInput);
         M.FormSelect.init(planInput);
         M.FormSelect.init(methodInput); 
+        M.FormSelect.init(nivelInput); 
+        M.FormSelect.init(goalInput); 
+
 
     } else if (type === "edit") {
 
@@ -193,17 +217,19 @@ function insertDataStudentByID(item, type) {
         numberInput.removeAttribute('readonly');
         btn.classList.remove('disabled');
 
-        selectStateByIdOrName(data.state.id, stateName = null)
-        getDataGender(data.gender.id);
-        selectPlanById(data.payment.plan_id)
-        selectMethodById(data.payment.method_id)
+        selectStateByIdOrName(data.state.id, stateName = null);
+        selectGenderById(data.gender.id);
+        selectPlanById(data.payment.plan_id);
+        selectMethodById(data.payment.method_id);
+        selectNivelById(data.nivel.id);
+        selectGoalById(data.goal.id);
 
 
     }
 
 }
 
-function getDataGender(genderId = null) {
+function selectGenderById(genderId = null) {
 
     return fetch('http://127.0.0.1:5001/gender', {method: 'GET'})
     .then(response => {
@@ -354,6 +380,29 @@ function getDataMethod() {
         })
 }
 
+function getDataNivel() {
+    return fetch('http://127.0.0.1:5001/nivel', { method: 'GET' })
+        .then(response => {
+            
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+            }
+            return response.json();
+        })
+}
+
+function getDataGoal() {
+    return fetch('http://127.0.0.1:5001/goal', { method: 'GET' })
+        .then(response => {
+            
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+            }
+            
+            return response.json();
+        })
+}
+
 function searchCep() {
     const cep = document.getElementById("cep_").value;
 
@@ -435,6 +484,70 @@ function selectDiscountMethodById(methodId = null) {
         });
 }
 
+function selectNivelById(nivelId = null) {
+    
+    const nivelInput = document.getElementById("nivel-select"); 
+
+    getDataNivel()
+        .then(nivel=>{
+
+            nivelInput.innerHTML = ""; 
+
+            if (Array.isArray(nivel)) {
+                nivel.forEach(nivel => {
+                    let nivelOption = document.createElement('option');
+                    nivelOption.value = nivel.id;
+                    nivelOption.text = nivel.name;
+                    nivelInput.appendChild(nivelOption);
+                });
+
+                if (nivelId) {
+                    nivelInput.value = nivelId;
+                }
+
+                M.FormSelect.init(nivelInput); 
+            } else {
+                console.error('Dados não são array');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar planos:', error);
+        });
+
+}
+
+function selectGoalById(goalId = null) {
+    
+    const goalInput = document.getElementById("goal-select"); 
+
+    getDataGoal()
+        .then(goals=>{
+
+            goalInput.innerHTML = ""; 
+
+            if (Array.isArray(goals)) {
+                goals.forEach(goal => {
+                    let goalOption = document.createElement('option');
+                    goalOption.value = goal.id;
+                    goalOption.text = goal.name;
+                    goalInput.appendChild(goalOption);
+                });
+
+                if (goalId) {
+                    goalInput.value = goalId;
+                }
+
+                M.FormSelect.init(goalInput); 
+            } else {
+                console.error('Dados não são array');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar planos:', error);
+        });
+
+}
+
 function getTotal() {
 
     var planSelectValue = document.getElementById('plan-select').value;
@@ -446,7 +559,6 @@ function getTotal() {
         return selectDiscountMethodById(methodSelectValue)
             .then(discountValue => {
 
-                //console.log(planValue - discountValue);
                 return planValue - discountValue;
 
             });
@@ -470,21 +582,22 @@ function createOrUpdateStudent() {
     const number = document.getElementById('number_').value;
     const plan =  parseInt(document.getElementById('plan-select').value);
     const method =  parseInt(document.getElementById('method-select').value);
+    const nivel =  parseInt(document.getElementById('nivel-select').value);
+    const goal = parseInt(document.getElementById('goal-select').value);
     const cep = document.getElementById("cep_").value;
 
     if (id == 0) {
-
-        //console.log(`plan: ${plan}, payment: ${payment}, method: ${method}`);
 
         fetch('http://127.0.0.1:5001/student', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id, name, email, gender, birthdate, phone, state, city, neighborhood, address, number, cep, plan, method, payment })
+            body: JSON.stringify({ id, name, email, gender, birthdate, phone, state, city, neighborhood, address, number, cep, plan, method, payment, nivel, goal })
         })
         .then(response => {
             if (!response.ok) {
+                console.log('ERRO');
                 throw new Error(`Erro HTTP: ${response.status}`);
             }
             return response.json();
@@ -503,7 +616,7 @@ function createOrUpdateStudent() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id, name, email, gender, birthdate, phone, state, city, neighborhood, address, number, cep, plan, payment, method })
+            body: JSON.stringify({ id, name, email, gender, birthdate, phone, state, city, neighborhood, address, number, cep, plan, payment, method, nivel, goal })
         })
         .then(response => {
             if (!response.ok) {
@@ -546,8 +659,10 @@ function createStudent() {
 
     selectPlanById();
     selectMethodById();
+    selectNivelById();
     selectStateByIdOrName();
-    getDataGender();    
+    selectGenderById();
+    selectGoalById();    
     
 }
 
@@ -628,8 +743,8 @@ function modalGeneric() {
                                     <thead>
                                         <tr>
                                             <th>Modalidade</th>
-                                            <th>Pagamento</th>
-                                            <th id="total_info" >Total</th>
+                                            <th>Nivel</th>
+                                            <th>Obejetivo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -637,10 +752,40 @@ function modalGeneric() {
                                             <td>
                                                 <div class="input-field">
                                                     <select id="plan-select" name="plan">
-                                                        <option value="" disabled selected>Selecione a modalidade</option>
+                                                        <option value="" disabled selected>Selecione a Modalidade</option>
                                                     </select>
                                                 </div>
                                             </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select id="nivel-select" name="nivel">
+                                                        <option value="" disabled selected>Selecione o Objetivo</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select id="goal-select" name="goal">
+                                                        <option value="" disabled selected>Selecione o Nivel</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <table class="responsive-table striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Pagamento</th>
+                                            <th id="total_info" >Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <td>
                                                 <div class="input-field">
                                                     <select id="method-select" name="method">
@@ -782,3 +927,87 @@ function deleteStudent(student_id, payment_id) {
         console.error('Erro na requisição:', error);
     });    
 }
+
+function reverseFormatName(formattedName) {
+
+  const reverseGoalNameMap = {
+    "Hipertrofia": "hipertrofia",
+    "Definição": "definicao",
+    "Força": "forca",
+    "Postura": "postura",
+    "Estética": "estetica",
+    "Condicionamento": "condicionamento",
+    "Funcionalidade": "funcionalidade",
+    "Resistência": "resistencia",
+    "Superação": "superacao",
+    "Comunidade": "comunidade",
+    "Emagrecimento": "emagrecimento",
+    "Cardio": "cardio",
+    "Bem-estar": "bem estar",
+    "Coordenação": "coordenacao",
+    "Diversão": "diversao",
+    "Reabilitação": "reabilitacao",
+    "Correção": "correcao",
+    "Mobilidade": "mobilidade",
+    "Prevenção": "prevencao",
+    "Recuperação": "recuperacao",
+    "Musculação": "musculacao",
+    "CrossFit": "crossfit",
+    "Zumba": "zumba",
+    "Fisioterapia": "fisioterapia",
+    "Iniciante": "iniciante",
+    "Intermediário": "intermediario",
+    "Avançado": "avancado"
+  };
+
+  return reverseGoalNameMap[formattedName] || formattedName;
+}
+
+function getAIData(item) {
+
+    data = JSON.parse(item.getAttribute('data-item'));
+
+    nivel = reverseFormatName(data.nivel.name);
+    plan = reverseFormatName(data.payment.plan_name);
+    goal = reverseFormatName(data.goal.name);
+    student = data.name;
+
+    fetch('http://127.0.0.1:5001/ai', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ plan, nivel, goal, student})
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error('Erro no servidor:', response.status, response.statusText);
+        }
+
+        return response.blob(); 
+    })
+    .then(blob => {
+
+        const url = window.URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+
+        a.href = url;
+        
+        a.download = `Plano_de_Treino_${student}.pdf`; 
+
+        document.body.appendChild(a);
+
+        a.click();
+        
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        console.log('PDF gerado e download iniciado!');
+
+    })
+    .catch(error => console.error('Erro na requisição ou download:', error));
+}
+
+
+
