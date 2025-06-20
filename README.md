@@ -1,4 +1,4 @@
-# FitAdmin (FrontEnd)
+# FitAdmin (Dashboard)
 
 ## Introdução
 
@@ -38,7 +38,7 @@ Este projeto tem como objetivo desenvolver um sistema completo que resolva esse 
 
 1. **Clone este repositório**
    ```bash
-   git clone git@github.com:JacksonSanti/FitAdmin_front_server.git
+   git clone git@github.com:JacksonSanti/FitAdmin_Dashboard.git
 2. **Criar a nossa network para a comunicação dos containers (é necessário ter o docker instalado)**
    ```bash
    docker network fitadmin_network
